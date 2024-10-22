@@ -1,0 +1,11 @@
+import random
+
+def escolher_palavra(categoria):
+    palavras = {
+        'animais': ['cachorro', 'gato', 'elefante', 'tigre', 'leão'],
+        'objetos': ['mesa', 'cadeira', 'computador', 'televisão', 'livro'],
+        'frutas': ['maçã', 'banana', 'laranja', 'uva', 'manga'],
+        'países': ['brasil', 'canada', 'franca', 'alemanha', 'japao']
+    }
+    
+    return random.choice(palavras[categoria])
