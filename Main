@@ -1,11 +1,60 @@
-import random
+def exibir_menu_categorias():
+    print("\nEscolha uma categoria:")  # Menu de categorias
+    print("1. Animais")
+    print("2. Frutas")
+    print("3. Cidades")
+    print("4. Filmes")
+    print("5. Músicas")
 
-def escolher_palavra(categoria):
-    palavras = {
-        'animais': ['cachorro', 'gato', 'elefante', 'tigre', 'leão'],
-        'objetos': ['mesa', 'cadeira', 'computador', 'televisão', 'livro'],
-        'frutas': ['maçã', 'banana', 'laranja', 'uva', 'manga'],
-        'países': ['brasil', 'canada', 'franca', 'alemanha', 'japao']
-    }
+def exibir_menu_dificuldade():
+    print("\nEscolha a dificuldade:")  # Menu nível de dificuldade
+    print("1. Fácil (3 a 5 letras)")
+    print("2. Médio (6 a 8 letras)")
+    print("3. Difícil (9 letras ou mais)")
+
+def escolher_categoria():
+    while True:
+        exibir_menu_categorias()
+        try:
+            escolha = int(input("Digite o número da categoria escolhida: ")) # Pergunta ao usuário a categoria
+            if escolha in range(1, 6):  # Verifica se a escolha está entre 1 e 5
+                categorias = {
+                    1: "animais",
+                    2: "frutas",
+                    3: "cidades",
+                    4: "filmes",
+                    5: "músicas"
+                }
+                return categorias[escolha]
+            else:
+                print("Opção inválida. Por favor, escolha um número de 1 a 5.")
+        except ValueError:  # Mensagem de erro se a entrada não for um número
+            print("Entrada inválida. Por favor, digite um número.")
+
+def escolher_dificuldade():
+    while True:
+        exibir_menu_dificuldade()
+        try:
+            escolha = int(input("Digite o número da dificuldade escolhida: ")) # Pergunta ao usuário a dificuldade
+            if escolha in range(1, 4):  # Verifica se a escolha está entre 1 e 3
+                dificuldades = {
+                    1: "fácil",
+                    2: "médio",
+                    3: "difícil"
+                }
+                return dificuldades[escolha]
+            else:
+                print("Opção inválida. Por favor, escolha um número de 1 a 3.")
+        except ValueError:  # Mensagem de erro se a entrada não for um número
+            print("Entrada inválida. Por favor, digite um número.")
+
+def main():
+    print("Bem-vindo ao Jogo da Forca!")
     
-    return random.choice(palavras[categoria])
+    categoria = escolher_categoria()
+    dificuldade = escolher_dificuldade()
+
+    print(f"\nVocê escolheu a categoria: {categoria} e a dificuldade: {dificuldade}.")   # Exibe as escolhas do usuário
+
+if __name__ == "__main__":
+    main()
