@@ -1,22 +1,81 @@
+import random
+
+# Dicionário de categorias
+categorias_palavras = {
+    "animais": [
+        {"palavra": "elefante", "dica": "É o maior animal terrestre.", "dificuldade": "difícil"},
+        {"palavra": "cachorro", "dica": "É conhecido como o melhor amigo do homem.", "dificuldade": "médio"},
+        {"palavra": "gato", "dica": "É um animal doméstico muito popular.", "dificuldade": "fácil"},
+        {"palavra": "girafa", "dica": "Animal de pescoço muito longo, encontrado na África.", "dificuldade": "médio"},
+        {"palavra": "tigre", "dica": "Um grande felino, conhecido por suas listras.", "dificuldade": "difícil"},
+        {"palavra": "urso", "dica": "Animal que hiberna no inverno, frequentemente encontrado em florestas.", "dificuldade": "fácil"},
+        {"palavra": "hipopotamo", "dica": "Animal grande que vive em rios e lagos na África.", "dificuldade": "difícil"},
+        {"palavra": "cavalo", "dica": "Animal usado para montar e como meio de transporte.", "dificuldade": "médio"}
+    ],
+    "frutas": [
+        {"palavra": "maçã", "dica": "Uma fruta redonda, comum em tortas.", "dificuldade": "fácil"},
+        {"palavra": "banana", "dica": "Fruta amarela, muito consumida por macacos.", "dificuldade": "fácil"},
+        {"palavra": "laranja", "dica": "Fruta cítrica e rica em vitamina C.", "dificuldade": "fácil"},
+        {"palavra": "morango", "dica": "Fruta vermelha e doce, geralmente usada em sobremesas.", "dificuldade": "médio"},
+        {"palavra": "manga", "dica": "Fruta tropical, muito suculenta e com sabor doce.", "dificuldade": "médio"},
+        {"palavra": "abacaxi", "dica": "Fruta tropical com casca espinhosa e polpa doce.", "dificuldade": "médio"},
+        {"palavra": "cabeludo", "dica": "Fruta pequena, redonda, de casca dura, encontrada em regiões tropicais.", "dificuldade": "difícil"},
+        {"palavra": "cabeludo", "dica": "Este abacaxi ou fruto de frutas também da parte ou cores sensações da frutals citrus trísticas.", "dificuldade": "difícil"}
+    ],
+    "cidades": [
+        {"palavra": "são paulo", "dica": "A maior cidade do Brasil.", "dificuldade": "fácil"},
+        {"palavra": "rio de janeiro", "dica": "Cidade famosa pelo Cristo Redentor.", "dificuldade": "fácil"},
+        {"palavra": "paris", "dica": "A cidade das luzes.", "dificuldade": "fácil"},
+        {"palavra": "londres", "dica": "Capital do Reino Unido.", "dificuldade": "médio"},
+        {"palavra": "berlim", "dica": "Capital da Alemanha.", "dificuldade": "médio"},
+        {"palavra": "tokyo", "dica": "Capital do Japão.", "dificuldade": "médio"},
+        {"palavra": "amsterdã", "dica": "Cidade holandesa famosa pelos canais.", "dificuldade": "difícil"},
+        {"palavra": "bangkok", "dica": "Capital da Tailândia, famosa por seus templos.", "dificuldade": "difícil"}
+    ],
+    "filmes": [
+        {"palavra": "avengers", "dica": "Grupo de super-heróis da Marvel.", "dificuldade": "fácil"},
+        {"palavra": "titanic", "dica": "Filme sobre o famoso naufrágio.", "dificuldade": "fácil"},
+        {"palavra": "matrix", "dica": "Filme de ficção científica onde nada é o que parece.", "dificuldade": "fácil"},
+        {"palavra": "inception", "dica": "Filme de Christopher Nolan sobre sonhos.", "dificuldade": "médio"},
+        {"palavra": "avatar", "dica": "Filme de ficção científica com planetas alienígenas.", "dificuldade": "médio"},
+        {"palavra": "interstellar", "dica": "Filme de ficção científica que explora viagens no espaço.", "dificuldade": "médio"},
+        {"palavra": "godfather", "dica": "Filme clássico sobre a máfia italiana.", "dificuldade": "difícil"},
+        {"palavra": "schindler", "dica": "Filme sobre o holocausto, dirigido por Steven Spielberg.", "dificuldade": "difícil"}
+    ],
+    "músicas": [
+        {"palavra": "imagine", "dica": "Canção famosa de John Lennon.", "dificuldade": "fácil"},
+        {"palavra": "hotel california", "dica": "Canção dos Eagles.", "dificuldade": "fácil"},
+        {"palavra": "thriller", "dica": "Canção de Michael Jackson, conhecida pelo videoclipe icônico.", "dificuldade": "fácil"},
+        {"palavra": "bohemian rhapsody", "dica": "Canção épica da banda Queen.", "dificuldade": "médio"},
+        {"palavra": "smells like teen spirit", "dica": "Canção de Nirvana, considerada um hino do grunge.", "dificuldade": "médio"},
+        {"palavra": "stairway to heaven", "dica": "Canção clássica do Led Zeppelin.", "dificuldade": "médio"},
+        {"palavra": "back in black", "dica": "Canção do AC/DC, um dos maiores clássicos do rock.", "dificuldade": "difícil"},
+        {"palavra": "black hole sun", "dica": "Canção do Soundgarden, com uma melodia sombria.", "dificuldade": "difícil"}
+    ]
+}
+
+# Função para exibir o menu de categorias
 def exibir_menu_categorias():
-    print("\nEscolha uma categoria:")  # Menu de categorias
+    print("\nEscolha uma categoria:")  
     print("1. Animais")
     print("2. Frutas")
     print("3. Cidades")
     print("4. Filmes")
     print("5. Músicas")
 
+# Função para exibir o menu de dificuldades
 def exibir_menu_dificuldade():
-    print("\nEscolha a dificuldade:")  # Menu nível de dificuldade
+    print("\nEscolha a dificuldade:")  
     print("1. Fácil (3 a 5 letras)")
     print("2. Médio (6 a 8 letras)")
     print("3. Difícil (9 letras ou mais)")
 
+# Função para escolher a categoria
 def escolher_categoria():
     while True:
-        exibir_menu_categorias()
+        exibir_menu_categorias()  # Chama a função para exibir o menu de categorias
         try:
-            escolha = int(input("Digite o número da categoria escolhida: ")) # Pergunta ao usuário a categoria
+            escolha = int(input("Digite o número da categoria escolhida: "))  # Pede ao jogador a escolha da categoria
             if escolha in range(1, 6):  # Verifica se a escolha está entre 1 e 5
                 categorias = {
                     1: "animais",
@@ -25,36 +84,116 @@ def escolher_categoria():
                     4: "filmes",
                     5: "músicas"
                 }
-                return categorias[escolha]
+                return categorias[escolha]  # Retorna a categoria escolhida
             else:
                 print("Opção inválida. Por favor, escolha um número de 1 a 5.")
-        except ValueError:  # Mensagem de erro se a entrada não for um número
+        except ValueError:  # Caso o usuário não digite um número, exibe uma mensagem de erro
             print("Entrada inválida. Por favor, digite um número.")
 
+# Função para escolher a dificuldade
 def escolher_dificuldade():
     while True:
-        exibir_menu_dificuldade()
+        exibir_menu_dificuldade()  # Chama a função para exibir o menu de dificuldades
         try:
-            escolha = int(input("Digite o número da dificuldade escolhida: ")) # Pergunta ao usuário a dificuldade
+            escolha = int(input("Digite o número da dificuldade escolhida: "))  # Pede ao jogador a escolha da dificuldade
             if escolha in range(1, 4):  # Verifica se a escolha está entre 1 e 3
                 dificuldades = {
                     1: "fácil",
                     2: "médio",
                     3: "difícil"
                 }
-                return dificuldades[escolha]
+                return dificuldades[escolha]  # Retorna a dificuldade escolhida
             else:
                 print("Opção inválida. Por favor, escolha um número de 1 a 3.")
-        except ValueError:  # Mensagem de erro se a entrada não for um número
+        except ValueError:  # Caso o usuário não digite um número, exibe uma mensagem de erro
             print("Entrada inválida. Por favor, digite um número.")
 
-def main():
-    print("Bem-vindo ao Jogo da Forca!")
+# Função para selecionar uma palavra aleatória com base na categoria e dificuldade
+def selecionar_palavra(categoria, dificuldade):
+    # Filtra as palavras da categoria selecionada pela dificuldade escolhida
+    palavras_filtradas = []
+    for item in categorias_palavras[categoria]:
+        if item["dificuldade"] == dificuldade:
+            palavras_filtradas.append(item)
+
+    if palavras_filtradas:  # Se houver palavras filtradas pela dificuldade
+        return random.choice(palavras_filtradas)  # Retorna uma palavra aleatória da lista filtrada
+    else: # necessario para banco de dados de palavras maior.
+        print(f"\nNão há palavras suficientes para a dificuldade '{dificuldade}' nesta categoria.")
+        print("Escolhendo uma palavra aleatória sem considerar a dificuldade...")
+        return random.choice(categorias_palavras[categoria])  # Caso não haja palavras suficientes, escolhe aleatoriamente
+
+# Função para exibir a forca conforme o número de tentativas erradas
+def exibir_forca(tentativas_erradas):
+    partes = ["Cabeça", "Corpo", "Braço esquerdo", "Braço direito", "Perna esquerda", "Perna direita"]
+    print("\nVocê perdeu as seguintes partes do corpo:")  
+    for i in range(tentativas_erradas):
+        print(f"- {partes[i]}")  # Exibe cada parte perdida
+    if tentativas_erradas == 6:  
+        print("\nVocê perdeu! O jogo acabou!")  # Exibe a mensagem de derrota
+
+# Função principal
+def jogo_da_forca():
+    categoria = escolher_categoria()  # Chama a função para escolher a categoria
+    dificuldade = escolher_dificuldade()  # Chama a função para escolher a dificuldade
+    print(f"\nVocê escolheu a categoria: {categoria} e a dificuldade: {dificuldade}.")  # Exibe as escolhas feitas pelo jogador
     
-    categoria = escolher_categoria()
-    dificuldade = escolher_dificuldade()
+    palavra_escolhida = selecionar_palavra(categoria, dificuldade)  # Chama a função para selecionar a palavra
+    palavra_oculta = ["_"] * len(palavra_escolhida["palavra"])  # Cria uma lista de caracteres oculta (_), com base no tamanho da palavra
+    tentativas_erradas = 0  # Inicializa o número de tentativas erradas
+    letras_erradas = []  # Lista para armazenar as letras erradas
+    dicas_usadas = False  # Controla se a dica foi usada
 
-    print(f"\nVocê escolheu a categoria: {categoria} e a dificuldade: {dificuldade}.")   # Exibe as escolhas do usuário
+    print("\nA palavra tem", len(palavra_escolhida["palavra"]), "letras.")  # Exibe a quantidade de letras da palavra oculta
+    
+    while tentativas_erradas < 6:  # Loop até que o jogador tenha 6 tentativas erradas
+        print("\nPalavra:", " ".join(palavra_oculta))  # Exibe a palavra oculta até o momento
+        print("Letras erradas:", ", ".join(letras_erradas))  # Exibe as letras erradas já tentadas
+        
+        # Oferece uma dica se o jogador errar 2x
+        if tentativas_erradas >= 2 and not dicas_usadas:
+            print("\nDica: ", palavra_escolhida["dica"])  # Exibe a dica
+            dicas_usadas = True  # Marca que a dica foi utilizada
+        
+        tentativa = input("Digite uma letra: ").lower()  # Pede ao jogador para digitar uma letra
+        
+        # Verifica se a entrada é válida (uma única letra)
+        if len(tentativa) != 1 or not tentativa.isalpha():
+            print("Por favor, digite apenas uma letra.")  # Mensagem de erro para entradas inválidas
+            continue
+        
+        # Verifica se a letra está na palavra
+        if tentativa in palavra_escolhida["palavra"]:
+            # Atualiza a palavra oculta com a letra correta
+            for i in range(len(palavra_escolhida["palavra"])):
+                if palavra_escolhida["palavra"][i] == tentativa:
+                    palavra_oculta[i] = tentativa
+            # Verifica se a palavra foi toda descoberta
+            if "_" not in palavra_oculta:
+                print("\nVocê acertou a palavra:", palavra_escolhida["palavra"])
+                print("Parabéns, você ganhou!")  
+                break
+        else:
+            tentativas_erradas += 1  # Incrementa as tentativas erradas
+            letras_erradas.append(tentativa)  # Adiciona a letra errada à lista de letras erradas
+            exibir_forca(tentativas_erradas)  # Exibe a forca com a parte do corpo perdida
+    
+    # Se o jogador atingir o limite de tentativas erradas, ele perde
+    if tentativas_erradas == 6:
+        print(f"\nVocê perdeu! A palavra era: {palavra_escolhida['palavra']}")  # Mensagem de derrota
 
+# Função principal que gerencia a repetição do jogo
+def main():
+    while True:
+        print("Bem-vindo ao Jogo da Forca!")  # Mensagem de boas-vindas
+        jogo_da_forca()  # Inicia o jogo
+        
+        # Pergunta se o jogador deseja jogar novamente
+        jogar_novamente = input("\nDeseja jogar novamente? (s/n): ").lower()
+        if jogar_novamente != "s":
+            print("Obrigado por jogar!")  
+            break  # Encerra o jogo caso o jogador não queira jogar novamente
+
+# Inicia o programa chamando a função main
 if __name__ == "__main__":
     main()
